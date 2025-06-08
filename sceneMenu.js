@@ -12,7 +12,6 @@ var sceneMenu = new Phaser.Class({
         this.load.image('ButtonSoundOff', 'assets/images/ButtonSoundOff.png');
         this.load.image('ButtonMusicOn', 'assets/images/ButtonMusicOn.png');
         this.load.image('ButtonMusicOff', 'assets/images/ButtonMusicOff.png');
-        this.load.image('back', 'assets/images/back.png');
         this.load.audio('snd_menu', 'assets/audio/music_menu.mp3');
         this.load.audio('snd_touchshooter', 'assets/audio/fx_touch.mp3');
     },
@@ -76,16 +75,6 @@ var sceneMenu = new Phaser.Class({
         if (musicState == 0) {
             buttonMusic.setTexture('ButtonMusicOff');
         }
-
-        this.backButton = this.add.image(50, 50, 'back')
-            .setInteractive({ useHandCursor: true })  // Tambahkan ini untuk visual feedback
-            .setDepth(11)
-            .setScrollFactor(0)
-            .setScale(0.35)
-            .on('pointerdown', () => {
-                if (musicState) snd_touch.play();  // Gunakan sound yang tersedia
-                window.location.href = '../home.html';
-        });
 
         // Event Handling
         this.input.on('gameobjectover', function (pointer, gameObject) {
